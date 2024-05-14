@@ -1,0 +1,17 @@
+services:
+  postgresdb:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=fx_deals
+    ports:
+      - "5432:5432"
+  app:
+   depends_on:
+     - postgresdb
+   build: ./
+   ports:
+     - "8080:8080"
+
+
